@@ -31,19 +31,8 @@ This repo provides the information of how to set up Azure AD, integrate with NGI
 
 ## 🔧 Troubleshooting
 
-- How to ensure that Azure AD correctly set up before configuring your app or NGINX Dev Portal?
-
-  > Take the step of [Option 1. Set up your application via NGINX Plus](#option-1-set-up-and-test-a-sso-application-via-nginx-plus) once you set up Azure AD.
-
-- How to troubleshoot when PKCE is not working with Azure AD?
-- How to troubleshoot when none-PKCE is not working with Azure AD?
-- How to troubleshoot when logout is not working with Azure AD?
-- How to troubleshoot when dns server is not responding?
-- How to troubleshoot when logout is not working with Azure AD?
-- How to troubleshoot when `prefered_username` is not shown in Dev Portal UI?
-  > Add additional attributes of `prefered_username` when creating a user pool of Azure AD.
-- How to troubleshoot when a frontend OIDC simulation tool is not working with `X-Client-Id should be in cookie`. when signing-in after signed-out?
-- [Additional troubleshooting information](https://github.com/nginxinc/nginx-openid-connect#troubleshooting)
+- [Common Troubleshooting for NGINX Plus OIDC](https://github.com/nginx-openid-connect/nginx-oidc-troubleshooting#common-troubleshooting-for-nginx-oidc-and-all-idps)
+- [Troubleshooting for NGINX Plus OIDC and Azure AD](https://github.com/nginx-openid-connect/nginx-oidc-troubleshooting#troubleshooting-for-nginx-plus-oidc-and-azure-ad)
 
 <br>
 

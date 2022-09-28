@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+
+  nginx_plus_ubuntu18.04:
+    container_name: nginx-oidc-azure-ad
+    build:
+      context: ./
+      dockerfile: ./docker/docker-files/nginxplus-ubuntu18.04/Dockerfile
+    image: nginxplus_oidc_azure_ad_ubuntu18.04
+    ports:
+      - 15000:15000
+    volumes:
+      - type: bind
+        source: ./
+        target: /etc/nginx/conf.d/
+      - type: bind
+        source: ./docker/build-context/nginx/test/
+        target: /etc/nginx/test/
+      - type: bind
+        source: ./docker/build-context/content
+        target: /usr/share/nginx/html/

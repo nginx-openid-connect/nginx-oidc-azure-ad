@@ -1,24 +1,24 @@
-# How To Set Up NGINX ACM/DevPortal OIDC for Amazon Cognito Integration
+# How To Set Up NGINX ACM/DevPortal OIDC for Azure AD Integration
 
-Take the following steps to set up NGINX ACM/DevPortal OIDC and test it for Amazon Cognito integration.
+Take the following steps to set up NGINX ACM/DevPortal OIDC and test it for Azure AD integration.
 
 ## 1. Prerequisites
 
-- [**Set up Amazon Cognito**](./01-IdP-Setup.md)
+- [**Set up Azure AD**](./01-IdP-Setup.md)
 
   Ensure that you use **different application and callback/logout URLs** as the following example unlike that are already created to test your [containerized NGINX Plus](./02-NGINX-Plus-Setup.md).
 
-  | Category              | Example                                        |
-  | --------------------- | ---------------------------------------------- |
-  | Application Name      | `nginx-devportal-app`                          |
-  | Allowed Callback URLs | `http://nginx.devportal.cognito.test/_codexch` |
-  | Allowed Logout URLs   | `http://nginx.devportal.cognito.test/_logout`  |
+  | Category                 | Example                                         |
+  | ------------------------ | ----------------------------------------------- |
+  | Application Name         | `nginx-devportal-app`                           |
+  | Redirect URIs            | `https://nginx.devportal.azuread.test/_codexch` |
+  | Front-channel logout URL | `https://nginx.devportal.azuread.test/_logout`  |
 
 - Edit `hosts` file in your laptop via if you want to locally test your app:
 
   ```bash
   $ sudo vi /etc/hosts
-  127.0.0.1 nginx.devportal.cognito.test
+  127.0.0.1 nginx.devportal.azuread.test
   ```
 
 ## 2. Install NGINX API Connectivity Manager
@@ -64,6 +64,11 @@ Configure a Dev Portal by either referencing **NGINX Management Suite Docs** of 
   > ```
 
 - Create an environment of `Dev Portal`:
+  post_json = load("./json/01-create-env.json")
+
+  ```json
+  post_json['name']
+  ```
 
   > `POST https://{{ctrl_ip}}/api/acm/v1/infrastructure/workspaces/{{infraworkspacename}}/environments`
   >
@@ -235,7 +240,7 @@ Configure a Dev Portal by either referencing **NGINX Management Suite Docs** of 
   > }
   > ```
 
-## 3. Test Dev Portal OIDC with Amazon Cognito
+## 3. Test Dev Portal OIDC with Azure AD
 
 - Open a web browser and access the Dev Portal's FQDN like `http://nginx.devportal.cognito.test`.
 - Try `Login` and `Logout`.

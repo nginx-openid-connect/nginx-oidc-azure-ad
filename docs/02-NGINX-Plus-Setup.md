@@ -1,4 +1,4 @@
-# How To Set Up NGINX Plus OIDC for Amazon Cognito Integration
+# How To Set Up NGINX Plus OIDC for Azure AD Integration
 
 Take the following steps to set up NGINX Plus as the OpenID Connect relying party that runs.
 
@@ -10,62 +10,60 @@ Take the following steps to set up NGINX Plus as the OpenID Connect relying part
    git clone https://github.com/nginx-openid-connect/nginx-oidc-amazon-cognito.git
    ```
 
-2. In the `oidc_idp.conf`, find the following directives(`$idp_domain`, `$idp_region`, `$idp_user_pool_id`, `$oidc_client`), and update them.
+2. In the `oidc_idp.conf`, find the following directives(`$idp_domain`, `$idp_tenant_id`), and update them.
 
-   You could find the IDP domain in the **Basic Information** section.  
-   ![](./img/basic-domain.png)
+   You could find the `idp_tenant_id` in the **Directory (tenant) ID** section of Azure AD:
+
+   ![](./img/azure-ad-tenant-id.png)
 
    ```nginx
     map $x_client_id $idp_domain {
-        # e.g., my-nginx-plus-oidc.auth.us-east-2.amazoncognito.com
-        default "{{Edit-IdP-Domain}}";
+        default "login.microsoftonline.com"; # "{{edit-IdP-Domain}}";
     }
 
-    map $x_client_id $idp_region {
-        default "{{Edit-IdP-Region}}" # e.g., us-east-2
-    }
-
-    map $x_client_id $idp_user_pool_id {
-        default "{{Edit-User-Pool-ID}}" # e.g., us-east-xxxxxxxxxxx
-    }
-
-    map $x_client_id $oidc_client {
-        default "{{Edit-your-IdP-client-ID}}";
+    map $x_client_id $idp_tenant_id {
+    default "{{edit-Directory (tenant) ID}}"; # use for Azure AD
     }
    ```
 
-3. In the `oidc_idp.conf`, choose one of the following options.
+3. In the `oidc_idp.conf`, update `$oidc_client` and then update `$oidc_client_secret`, and `oidc_pkce_enable` accordingly as shown in below Options.
 
-   - Option 1. Update the following configuration if you don't enable **PKCE**.
+   ```nginx
+    map $x_client_id $oidc_client {
+        default "{{edit-your-IdP-client-ID}}";
+    }
+   ```
 
-     ```nginx
-     map $x_client_id $oidc_client_secret {
-         default "{{Edit-Your-IDP-Client-Secret}}";
-     }
+- Option 1. Update the following configuration if you don't enable **PKCE**.
 
-     map $x_client_id $oidc_pkce_enable {
-         default 0;
-     }
-     ```
+  ```nginx
+  map $x_client_id $oidc_client_secret {
+      default "{{Edit-Your-IDP-Client-Secret}}";
+  }
 
-   - Option 2. Update the following configuration if you enable **PKCE**.
+  map $x_client_id $oidc_pkce_enable {
+      default 0;
+  }
+  ```
 
-     ```nginx
-     map $x_client_id $oidc_client_secret {
-         default ""; # Remove the client secret
-     }
+- Option 2. Update the following configuration if you enable **PKCE**.
 
-     map $x_client_id $oidc_pkce_enable {
-         default 1;
-     }
-     ```
+  ```nginx
+  map $x_client_id $oidc_client_secret {
+      default ""; # Remove the client secret
+  }
+
+  map $x_client_id $oidc_pkce_enable {
+      default 1;
+  }
+  ```
 
 4. **Optional**: In the `oidc_nginx_server.conf`, update `$resolver` if you use local DNS servers.
 
    ```nginx
-    resolver   8.8.8.8;         # For global DNS lookup of IDP endpoint
-             # xxx.xxx.xxx.xxx; # For your local DNS lookup
-             # 127.0.0.11;      # For local Docker DNS lookup
+   resolver   8.8.8.8;         # For global DNS lookup of IDP endpoint
+           # xxx.xxx.xxx.xxx; # For your local DNS lookup
+           # 127.0.0.11;      # For local Docker DNS lookup
    ```
 
 ## Optional Configuration

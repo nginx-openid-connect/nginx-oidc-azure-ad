@@ -1,0 +1,41 @@
+{
+    "name": "{{environmentname}}",
+    "functions": [
+      "DEVPORTAL"
+    ],
+    "proxies": [
+      {
+        "proxyClusterName": "{{devPinstanceGroupName}}",
+        "hostnames": [
+          "{{devPenvironmentHostname}}"
+        ],
+        "runtime": "PORTAL-PROXY",
+        "policies": {
+          "oidc-authz": [
+            {
+              "action": {
+                "jwksURI": "https://{{idpDomain}}/{{idpTenantId}}/discovery/keys",
+                "tokenEndpoint": "https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/token",
+                "userInfoEndpoint": "https://graph.microsoft.com/oidc/userinfo",
+                "authorizationEndpoint": "https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/authorize",
+                "logOffEndpoint": "https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/logout",
+                "logOutParams": [
+                  
+                ],
+                "TokenParams": [
+                  
+                ]
+              },
+              "data": [
+                {
+                  "clientID": "{{clientId}}",
+                  "clientSecret": "{{clientSecret}}",
+                  "scopes": "openid+profile+email"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }

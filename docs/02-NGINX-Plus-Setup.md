@@ -4,10 +4,10 @@ Take the following steps to set up NGINX Plus as the OpenID Connect relying part
 
 ## Configure NGINX OpenID Connect
 
-1. Clone the [nginx-openid-connect/nginx-oidc-amazon-cognito](git@github.com:nginx-openid-connect/nginx-oidc-v1-amazon-cognito.git) GitHub repository, or download the repo files.
+1. Clone the [nginx-openid-connect/nginx-oidc-amazon-cognito](https://github.com/nginx-openid-connect/nginx-oidc-azure-ad) GitHub repository, or download the repo files.
 
    ```bash
-   git clone https://github.com/nginx-openid-connect/nginx-oidc-amazon-cognito.git
+   git clone https://github.com/nginx-openid-connect/nginx-oidc-azure-ad.git
    ```
 
 2. In the `oidc_idp.conf`, find the following directives(`$idp_domain`, `$idp_tenant_id`), and update them.

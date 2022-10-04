@@ -47,7 +47,7 @@ Take the following steps to run NGINX Plus in a Docker container and test OIDC f
 
   Enter your name and password which are registered in Azure AD.
 
-  ![](./img/login-cognito.png)
+  ![](./img/login-azure.png)
 
   You will see the following screen once you are successfully signed-in.
 

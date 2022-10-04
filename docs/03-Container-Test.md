@@ -1,6 +1,6 @@
-# How To Locally Test Containerized NGINX Plus OIDC for Amazon Cognito Integration
+# How To Locally Test Containerized NGINX Plus OIDC for Azure AD Integration
 
-Take the following steps to run NGINX Plus in a Docker container and test OIDC for Amazon Cognito integration.
+Take the following steps to run NGINX Plus in a Docker container and test OIDC for Azure AD integration.
 
 > Note: You could remotely test in your remote machine if you copy entire files there.
 
@@ -11,7 +11,7 @@ Take the following steps to run NGINX Plus in a Docker container and test OIDC f
 
   ```bash
   $ sudo vi /etc/hosts
-  127.0.0.1 nginx.cognito.test
+  127.0.0.1 nginx.azure.test
   ```
 
 - [Download NGINX Plus license files](https://www.nginx.com/free-trial-request/), and copy them to `./docker/build-context/ssl/`
@@ -39,13 +39,13 @@ Take the following steps to run NGINX Plus in a Docker container and test OIDC f
 
 ## 3. Run a Browser and Test OIDC
 
-- **Run** a Web Browser with `https://nginx.cognito.test`, and enter an `IdP application`'s `client ID`:
+- **Run** a Web Browser with `https://nginx.azure.test`, and enter an `IdP application`'s `client ID`:
 
   ![](./img/run-browser.png)
 
 - **Login** to click `Sign in` button:
 
-  Enter your name and password which are registered in Amazon Cognito.
+  Enter your name and password which are registered in Azure AD.
 
   ![](./img/login-cognito.png)
 

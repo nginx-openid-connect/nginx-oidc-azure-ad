@@ -6,10 +6,11 @@ Take the following steps to create a new application of Azure AD for integrating
 >
 > The following procedure reflects the Azure AD GUI at the time of publication, but the GUI is subject to change. Use this guide as a reference and adapt to the current Azure AD GUI as necessary.
 
-- [Create a new User Pool](#create-a-new-user-pool)
-- [Create a user](#create-a-user)
-- [Create a domain](#create-a-domain)
-- [Create or Edit a new Application](#create-or-edit-a-new-application)
+- [Create an Account](#create-an-account)
+- [Create an App](#create-an-app)
+- [Create a Secret](#create-a-secret)
+- [Add Users](#add-users)
+- [Add Groups](#add-groups)
 
 ## Create an Account
 

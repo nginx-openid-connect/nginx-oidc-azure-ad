@@ -39,7 +39,7 @@ Take the following steps to run NGINX Plus in a Docker container and test OIDC f
 
 ## 3. Run a Browser and Test OIDC
 
-- **Run** a Web Browser with `https://nginx.azure.test`, and enter an `IdP application`'s `client ID`:
+- **Run** a Web Browser with `https://nginx.azure.test:15000`, and enter an `IdP application`'s `client ID`:
 
   ![](./img/run-browser.png)
 

@@ -27,7 +27,7 @@ Take the following steps to set up NGINX ACM/DevPortal OIDC and test it for Azur
 
 - [Install NGINX API Connectivity Manager](https://docs.nginx.com/nginx-management-suite/admin-guides/installation/install-guide/)
 
-## 2. Set Up NGINX Dev Portal
+## 3. Set Up NGINX Dev Portal
 
 Configure a Dev Portal by either referencing **NGINX Management Suite Docs** of [How To Set Up a NGINX Dev Portal](https://docs.nginx.com/nginx-management-suite/acm/getting-started/add-devportal/) or taking the following steps of calling APIs:
 

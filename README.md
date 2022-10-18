@@ -4,6 +4,10 @@ Reference implementation of NGINX Plus as relying party for OpenID Connect authe
 
 This repo provides the information of how to set up Azure AD, integrate with NGINX Plus, and locally test using a containerized NGINX Plus app, a frontend OIDC simulation tool, and a NGINX Dev Portal.
 
+> **Note:**
+>
+> - Azure AD's PKCE is not supported with NGINX Plus yet.
+
 ![](./docs/img/nginx-oidc-workflow.png)
 
 - [Getting Started](#🏠-getting-started)

@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "af7406c5-1d48-40c6-99db-6304a1ac2be9",
+		"name": "1-ACM-DevPortal-OIDC-for-Azure-AD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5563811"
+	},
+	"item": [
+		{
+			"name": "Create a infra > workspace",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"{{infraworkspacename}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ctrl_ip}}/api/acm/v1/infrastructure/workspaces",
+					"protocol": "https",
+					"host": [
+						"{{ctrl_ip}}"
+					],
+					"path": [
+						"api",
+						"acm",
+						"v1",
+						"infrastructure",
+						"workspaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a proxy > workspace",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"{{proxyworkspacename}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ctrl_ip}}/api/acm/v1/services/workspaces",
+					"protocol": "https",
+					"host": [
+						"{{ctrl_ip}}"
+					],
+					"path": [
+						"api",
+						"acm",
+						"v1",
+						"services",
+						"workspaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an env (DevPortal - None-PKCE)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"{{environmentname}}\",\n  \"functions\": [\n    \"DEVPORTAL\"\n  ],\n  \"proxies\": [\n    {\n      \"proxyClusterName\": \"{{devPinstanceGroupName}}\",\n      \"hostnames\": [\n        \"{{devPenvironmentHostname}}\"\n      ],\n      \"runtime\": \"PORTAL-PROXY\",\n      \"policies\": {\n        \"oidc-authz\": [\n          {\n            \"action\": {\n              \"authFlowType\": \"AUTHCODE\",\n              \"jwksURI\": \"https://{{idpDomain}}/{{idpTenantId}}/discovery/keys\",\n              \"tokenEndpoint\": \"https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/token\",\n              \"userInfoEndpoint\": \"https://graph.microsoft.com/oidc/userinfo\",\n              \"authorizationEndpoint\": \"https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/authorize\",\n              \"logOffEndpoint\": \"https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/logout\",\n              \"logOutParams\": [],\n              \"TokenParams\": [],\n              \"uris\": {\n                \"loginURI\": \"/login\",\n                \"logoutURI\": \"/logout\",\n                \"redirectURI\": \"/_codexch\",\n                \"userInfoURI\": \"/userinfo\"\n              }\n            },\n            \"data\": [\n              {\n                \"clientID\": \"{{clientId}}\",\n                \"clientSecret\": \"{{clientSecret}}\",\n                \"scopes\": \"openid+profile+email\"\n              }\n            ]\n          }\n        ],\n        \"tls-inbound\": [\n          {\n            \"data\": {\n              \"serverCerts\": [\n                {\n                  \"key\": \"{{TLSKey}}\",\n                  \"cert\": \"{{TLSCert}}\"\n                }\n              ]\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ctrl_ip}}/api/acm/v1/infrastructure/workspaces/{{infraworkspacename}}/environments",
+					"protocol": "https",
+					"host": [
+						"{{ctrl_ip}}"
+					],
+					"path": [
+						"api",
+						"acm",
+						"v1",
+						"infrastructure",
+						"workspaces",
+						"{{infraworkspacename}}",
+						"environments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an env (DevPortal - PKCE)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"{{environmentname}}\",\n  \"functions\": [\n    \"DEVPORTAL\"\n  ],\n  \"proxies\": [\n    {\n      \"proxyClusterName\": \"{{devPinstanceGroupName}}\",\n      \"hostnames\": [\n        \"{{devPenvironmentHostname}}\"\n      ],\n      \"runtime\": \"PORTAL-PROXY\",\n      \"policies\": {\n        \"oidc-authz\": [\n          {\n            \"action\": {\n              \"authFlowType\": \"PKCE\",\n              \"jwksURI\": \"https://{{idpDomain}}/{{idpTenantId}}/discovery/keys\",\n              \"tokenEndpoint\": \"https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/token\",\n              \"userInfoEndpoint\": \"https://graph.microsoft.com/oidc/userinfo\",\n              \"authorizationEndpoint\": \"https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/authorize\",\n              \"logOffEndpoint\": \"https://{{idpDomain}}/{{idpTenantId}}/oauth2/v2.0/logout\",\n              \"logOutParams\": [],\n              \"TokenParams\": [],\n              \"uris\": {\n                \"loginURI\": \"/login\",\n                \"logoutURI\": \"/logout\",\n                \"redirectURI\": \"/_codexch\",\n                \"userInfoURI\": \"/userinfo\"\n              }\n            },\n            \"data\": [\n              {\n                \"clientID\": \"{{clientId}}\",\n                \"clientSecret\": \"{{clientSecret}}\",\n                \"scopes\": \"openid+profile+email\"\n              }\n            ]\n          }\n        ],\n        \"tls-inbound\": [\n          {\n            \"data\": {\n              \"serverCerts\": [\n                {\n                  \"key\": \"{{TLSKey}}\",\n                  \"cert\": \"{{TLSCert}}\"\n                }\n              ]\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ctrl_ip}}/api/acm/v1/infrastructure/workspaces/{{infraworkspacename}}/environments",
+					"protocol": "https",
+					"host": [
+						"{{ctrl_ip}}"
+					],
+					"path": [
+						"api",
+						"acm",
+						"v1",
+						"infrastructure",
+						"workspaces",
+						"{{infraworkspacename}}",
+						"environments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get an env (DevPortal)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{ctrl_ip}}/api/acm/v1/infrastructure/workspaces/{{infraworkspacename}}/environments",
+					"protocol": "https",
+					"host": [
+						"{{ctrl_ip}}"
+					],
+					"path": [
+						"api",
+						"acm",
+						"v1",
+						"infrastructure",
+						"workspaces",
+						"{{infraworkspacename}}",
+						"environments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete env (DevPortal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ctrl_ip}}/api/acm/v1/infrastructure/workspaces/{{infraworkspacename}}/environments/{{environmentname}}",
+					"protocol": "https",
+					"host": [
+						"{{ctrl_ip}}"
+					],
+					"path": [
+						"api",
+						"acm",
+						"v1",
+						"infrastructure",
+						"workspaces",
+						"{{infraworkspacename}}",
+						"environments",
+						"{{environmentname}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "Your Password",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ctrl_ip",
+			"value": "10.146.186.28",
+			"type": "string"
+		},
+		{
+			"key": "infraworkspacename",
+			"value": "acm-infra",
+			"type": "string"
+		},
+		{
+			"key": "proxyworkspacename",
+			"value": "acm-proxy-01",
+			"type": "string"
+		},
+		{
+			"key": "devPinstanceGroupName",
+			"value": "devp-group",
+			"type": "string"
+		},
+		{
+			"key": "idpDomain",
+			"value": "login.microsoftonline.com",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "{{edit-your-client-id}}",
+			"type": "string"
+		},
+		{
+			"key": "environmentname",
+			"value": "env-sports",
+			"type": "string"
+		},
+		{
+			"key": "devPenvironmentHostname",
+			"value": "nginx.devportal.azuread.test",
+			"type": "string"
+		},
+		{
+			"key": "clientSecret",
+			"value": "{{edit-your-client-secret}}",
+			"type": "string"
+		},
+		{
+			"key": "idpTenantId",
+			"value": "{{edit-your-tenant-id}}",
+			"type": "string"
+		},
+		{
+			"key": "TLSCert",
+			"value": "{{edit-your-TLS-Cert}}",
+			"type": "string"
+		},
+		{
+			"key": "TLSKey",
+			"value": "{{edit-your-TLS-Key}}",
+			"type": "string"
+		}
+	]
+}

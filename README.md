@@ -6,7 +6,7 @@ This repo provides the information of how to set up Azure AD, integrate with NGI
 
 > **Note:**
 >
-> - Azure AD's PKCE is not supported with NGINX Plus yet.
+> - Azure AD's PKCE is not supported with NGINX Plus OIDC yet.
 
 ![](./docs/img/nginx-oidc-workflow.png)
 

@@ -64,11 +64,6 @@ Configure a Dev Portal by either referencing **NGINX Management Suite Docs** of 
   > ```
 
 - Create an environment of `Dev Portal`:
-  post_json = load("./json/01-create-env.json")
-
-  ```json
-  post_json['name']
-  ```
 
   > `POST https://{{ctrl_ip}}/api/acm/v1/infrastructure/workspaces/{{infraworkspacename}}/environments`
 

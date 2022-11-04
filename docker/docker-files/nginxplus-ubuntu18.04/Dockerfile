@@ -191,9 +191,9 @@ RUN    mkdir -p /etc/nginx/conf.d                           \
 VOLUME /usr/share/nginx/html
 VOLUME /etc/nginx
 
-RUN    chmod -R 777 /etc/nginx
-RUN    chmod -R 777 /etc/nginx/conf.d
-RUN    chmod -R 777 /usr/share/nginx/html/css
+RUN    chmod -R 644 /etc/nginx
+RUN    chmod -R 644 /etc/nginx/conf.d
+RUN    chmod -R 644 /usr/share/nginx/html/css
 
 # COPY (Nginx configuration) directory
 COPY  docker/build-context/content/   /usr/share/nginx/html/

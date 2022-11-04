@@ -48,7 +48,7 @@ Take the following steps to create a new application of Azure AD for integrating
    - Option 2. Choose **None** if you enable **PKCE**.
 
      - Name – `nginx-plus-oidc-pkce`
-     - Redirect URI – `Singpe-page application(SPA)`: `https://nginx.azure.test:15000/_codexch`
+     - Redirect URI – `Single-page application (SPA)`: `https://nginx.azure.test:15000/_codexch`
 
        > **Notes:**
        >

@@ -177,8 +177,8 @@ function validateAccessToken(r) {
 // - https://openid.net/specs/openid-connect-rpinitiated-1_0.html#RedirectionAfterLogout
 function logout(r) {
     r.log('OIDC logout for ' + r.variables.cookie_session_id);
-    var logout_endpoint = generateCustomEndpoint(r,
-        r.variables.oidc_logout_endpoint,
+    var end_session_endpoint = generateCustomEndpoint(r,
+        r.variables.oidc_end_session_endpoint,
         r.variables.oidc_logout_path_params_enable,
         r.variables.oidc_logout_path_params
     );
@@ -199,7 +199,7 @@ function logout(r) {
     r.variables.id_token      = '-';
     r.variables.access_token  = '-';
     r.variables.refresh_token = '-';
-    r.return(302, logout_endpoint + queryParams);
+    r.return(302, end_session_endpoint + queryParams);
 }
 
 // Generate custom endpoint using path parameters if the option is enable.

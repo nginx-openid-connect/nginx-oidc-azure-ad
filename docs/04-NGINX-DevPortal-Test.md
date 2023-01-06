@@ -18,8 +18,9 @@ Take the following steps to set up NGINX ACM/DevPortal OIDC and test it for Azur
 
   ```bash
   $ sudo vi /etc/hosts
-  127.0.0.1 nginx.devportal.azuread.test
-  ```
+  127.0.0.1 nginx.devportal.azuread.test #Note : The provided IP address should be of the host where you installed the Dev Portal packages.
+  # Also make sure your controller and Dev Portal /etc/hosts files have similar entries.
+```
 
 ## 2. Install NGINX API Connectivity Manager
 
@@ -164,6 +165,9 @@ Configure a Dev Portal by either referencing **NGINX Management Suite Docs** of 
 
 ## 3. Test Dev Portal OIDC with Azure AD
 
-- Open a web browser and access the Dev Portal's FQDN like `http://nginx.devportal.cognito.test`.
-- Try `Login` and `Logout`.
+- Open a web browser and access the Dev Portal's FQDN like `http://nginx.devportal.azuread.test`
+- Try `Login`
+![](./img/azure-ad-devportal-after-logIn.png)
+- and `Logout`.
+![](./img/azure-ad-devportal-after-logout.png)
 - Test the above TWO steps after changing IdP (PKCE option) and updating Dev Portal via NGINX ACM API.

@@ -1,12 +1,12 @@
 # nginx-oidc-azure-ad
 
-Reference implementation of NGINX Plus as relying party for OpenID Connect authentication w/ Azure AD.
+Reference implementation of NGINX Plus as relying party for OpenID Connect authentication w/ Azure Entera.
 
-This repo provides the information of how to set up Azure AD, integrate with NGINX Plus, and locally test using a containerized NGINX Plus app, a frontend OIDC simulation tool, and a NGINX Dev Portal.
+This repo provides the information of how to set up Azure Entera, integrate with NGINX Plus, and locally test using a containerized NGINX Plus app, a frontend OIDC simulation tool, and a NGINX Dev Portal.
 
 > **Note:**
 >
-> - Azure AD's PKCE is not supported with NGINX Plus OIDC yet.
+> - Azure Entera's PKCE is not supported with NGINX Plus OIDC yet.
 
 ![](./docs/img/nginx-oidc-workflow.png)
 
@@ -20,7 +20,7 @@ This repo provides the information of how to set up Azure AD, integrate with NGI
 
 ### Set up an identity provider (IdP)
 
-- [Create and configure an app in Azure AD](./docs/01-IdP-Setup.md)
+- [Create and configure an app in Azure Entera](./docs/01-IdP-Setup.md)
 
 ### Option 1. Set up and Test a SSO application via NGINX Plus
 
@@ -36,7 +36,7 @@ This repo provides the information of how to set up Azure AD, integrate with NGI
 ## 🔧 Troubleshooting
 
 - [Common Troubleshooting for NGINX Plus OIDC](https://github.com/nginx-openid-connect/nginx-oidc-troubleshooting#common-troubleshooting-for-nginx-oidc-and-all-idps)
-- [Troubleshooting for NGINX Plus OIDC and Azure AD](https://github.com/nginx-openid-connect/nginx-oidc-troubleshooting#troubleshooting-for-nginx-plus-oidc-and-azure-ad)
+- [Troubleshooting for NGINX Plus OIDC and Azure Entera](https://github.com/nginx-openid-connect/nginx-oidc-troubleshooting#troubleshooting-for-nginx-plus-oidc-and-azure-ad)
 
 <br>
 
@@ -44,6 +44,6 @@ This repo provides the information of how to set up Azure AD, integrate with NGI
 
 - [NGINX OIDC Core v1.0: Forked from NGINX GitHub](https://github.com/nginx-openid-connect/nginx-oidc-core-v1)
 - [NGINX OIDC Core v2.0: Forked from NGINX GitHub](https://github.com/nginx-openid-connect/nginx-oidc-core)
-- [NGINX Plus: Single Sign-On With Azure AD](https://docs.nginx.com/nginx/deployment-guides/single-sign-on/active-directory-federation-services/)
+- [NGINX Plus: Single Sign-On With Azure Entera](https://docs.nginx.com/nginx/deployment-guides/single-sign-on/active-directory-federation-services/)
 - [NGINX Management Suite](https://docs.nginx.com/nginx-management-suite/)
 - [NGINX API Connectivity Manager](https://docs.nginx.com/nginx-management-suite/acm/)
